@@ -1,0 +1,164 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── CSS Variables for Dark Mode ────────────────────── */
+:root {
+  --bg-primary: #F7F7F7;
+  --bg-card: #FFFFFF;
+  --bg-card-hover: #F9F9F9;
+  --text-primary: #1A1A1A;
+  --text-secondary: #6B7280;
+  --border-color: #E5E7EB;
+  --input-bg: #FFFFFF;
+  --nav-bg: #1a1a1a;
+}
+
+.dark {
+  --bg-primary: #0f1117;
+  --bg-card: #1e2130;
+  --bg-card-hover: #252a3a;
+  --text-primary: #f1f5f9;
+  --text-secondary: #94a3b8;
+  --border-color: #2d3748;
+  --input-bg: #252a3a;
+  --nav-bg: #0d0f18;
+}
+
+@layer base {
+  * { box-sizing: border-box; }
+  body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+}
+
+@layer components {
+  /* Buttons */
+  .btn-primary {
+    @apply bg-brand-yellow text-brand-black font-bold px-5 py-2.5 rounded-lg hover:bg-brand-orange transition-all duration-200 shadow-sm active:scale-95;
+  }
+  .btn-secondary {
+    @apply bg-brand-black text-white font-semibold px-5 py-2.5 rounded-lg transition-all duration-200 shadow-sm active:scale-95;
+  }
+  .btn-outline {
+    @apply border-2 border-brand-yellow text-brand-black font-semibold px-5 py-2.5 rounded-lg hover:bg-brand-yellow transition-all duration-200 active:scale-95;
+  }
+  .btn-danger {
+    @apply bg-red-500 text-white font-semibold px-5 py-2.5 rounded-lg hover:bg-red-600 transition-all duration-200 active:scale-95;
+  }
+  .btn-ghost {
+    @apply text-gray-500 font-semibold px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-white/10 transition-all duration-200;
+  }
+
+  /* Cards */
+  .card {
+    @apply rounded-2xl shadow-md transition-all duration-300;
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+  }
+  .card:hover {
+    box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+  }
+
+  /* Inputs */
+  .input-field {
+    @apply w-full rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-brand-yellow focus:border-transparent transition-all duration-200;
+    background-color: var(--input-bg);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+  }
+  .input-field::placeholder {
+    color: var(--text-secondary);
+  }
+  .label {
+    @apply block text-sm font-medium mb-1;
+    color: var(--text-secondary);
+  }
+
+  /* Badges */
+  .badge-yellow { @apply bg-brand-yellow text-brand-black text-xs font-bold px-2.5 py-1 rounded-full; }
+  .badge-green  { @apply bg-emerald-100 text-emerald-700 text-xs font-bold px-2.5 py-1 rounded-full; }
+  .badge-red    { @apply bg-red-100 text-red-700 text-xs font-bold px-2.5 py-1 rounded-full; }
+  .badge-blue   { @apply bg-blue-100 text-blue-700 text-xs font-bold px-2.5 py-1 rounded-full; }
+  .badge-purple { @apply bg-purple-100 text-purple-700 text-xs font-bold px-2.5 py-1 rounded-full; }
+  .badge-orange { @apply bg-orange-100 text-orange-700 text-xs font-bold px-2.5 py-1 rounded-full; }
+
+  /* Sidebar */
+  .sidebar-link { @apply flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all duration-200 cursor-pointer; }
+  .sidebar-link-active { @apply bg-brand-yellow text-brand-black; }
+  .sidebar-link-inactive { @apply text-gray-400 hover:bg-white/10 hover:text-white; }
+
+  /* Typography */
+  .page-title { @apply text-2xl md:text-3xl font-extrabold; color: var(--text-primary); }
+  .section-title { @apply text-lg font-bold; color: var(--text-primary); }
+
+  /* Dark table cells */
+  .table-cell { color: var(--text-primary); }
+}
+
+@layer utilities {
+  .scrollbar-hide::-webkit-scrollbar { display: none; }
+  .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+  .glass {
+    backdrop-filter: blur(16px);
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+  }
+  .dark-glass {
+    backdrop-filter: blur(16px);
+    background: rgba(0,0,0,0.4);
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+}
+
+/* ── Animations ─────────────────────────────────────── */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes shimmer {
+  0% { background-position: -200px 0; }
+  100% { background-position: calc(200px + 100%) 0; }
+}
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(20px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+@keyframes pulse-ring {
+  0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(245, 197, 24, 0.7); }
+  70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(245, 197, 24, 0); }
+  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(245, 197, 24, 0); }
+}
+
+.animate-fade-in-up { animation: fadeInUp 0.35s ease-out; }
+.animate-slide-in   { animation: slideIn 0.35s ease-out; }
+.animate-pulse-ring { animation: pulse-ring 2s infinite; }
+
+.skeleton {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200px 100%;
+  animation: shimmer 1.5s infinite;
+}
+.dark .skeleton {
+  background: linear-gradient(90deg, #1e2130 25%, #252a3a 50%, #1e2130 75%);
+  background-size: 200px 100%;
+}
+
+/* Notification dot */
+.notif-dot {
+  width: 8px; height: 8px;
+  background: #ef4444;
+  border-radius: 50%;
+  position: absolute;
+  top: -2px; right: -2px;
+  border: 2px solid white;
+}
+
+/* Dark mode table */
+.dark table th { background: #1a1f2e; color: #94a3b8; }
+.dark table tbody tr:hover { background: #252a3a; }
+.dark table tbody tr { border-color: #2d3748; }

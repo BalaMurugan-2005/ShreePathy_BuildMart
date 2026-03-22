@@ -1,0 +1,105 @@
+# ========================
+# Python / Django (Backend)
+# ========================
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+eggs/
+parts/
+var/
+sdist/
+develop-eggs/
+.installed.cfg
+lib/
+lib64/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual Environment
+venv/
+env/
+ENV/
+.venv/
+
+# Django
+*.log
+*.pot
+*.sqlite3
+db.sqlite3
+media/
+staticfiles/
+static_root/
+
+# Environment Variables
+.env
+.env.local
+.env.production
+backend/.env
+
+# ========================
+# Node.js / React (Frontend)
+# ========================
+node_modules/
+dist/
+build/
+.npm
+.eslintcache
+*.tsbuildinfo
+
+# Vite
+frontend/dist/
+
+# Environment Variables
+frontend/.env
+frontend/.env.local
+frontend/.env.production
+
+# ========================
+# OS / IDE Specific
+# ========================
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.lnk
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# VS Code
+.vscode/settings.json
+.vscode/launch.json
+.vscode/extensions.json
+*.code-workspace
+
+# PyCharm / JetBrains
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# ========================
+# Docker
+# ========================
+.dockerignore
+
+# ========================
+# Misc
+# ========================
+*.bak
+*.tmp
+*.swp
+*.swo
+*.log
+*.pid
+pyrightconfig.json
