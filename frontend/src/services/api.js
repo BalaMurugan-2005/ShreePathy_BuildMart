@@ -1,7 +1,11 @@
 // src/services/api.js
 import axios from 'axios'
 
-const API_BASE = import.meta.env.VITE_API_URL || '/api'
+let API_BASE = import.meta.env.VITE_API_URL || '/api'
+if (API_BASE.startsWith('http') && !API_BASE.endsWith('/api')) {
+  // Automatically append /api if the user forgot it in their environment variable!
+  API_BASE = API_BASE.replace(/\/$/, '') + '/api'
+}
 
 const api = axios.create({ baseURL: API_BASE })
 
