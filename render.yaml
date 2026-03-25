@@ -41,8 +41,8 @@ services:
     staticPublishPath: "frontend/dist"
     envVars:
       - key: VITE_API_URL
-        # Replace this URL with the actual generated backend URL if Render adds a suffix
-        value: "https://buildmart-backend.onrender.com/api"
+        # Replaced with the actual generated backend URL
+        value: "https://buildmart-backend-kr70.onrender.com/api"
 
 databases:
   - name: buildmart-db

@@ -98,3 +98,7 @@ SIMPLE_JWT = {
 }
 
 CORS_ALLOW_ALL_ORIGINS = True
+
+CSRF_TRUSTED_ORIGINS = [
+    'https://buildmart-frontend-r3hr.onrender.com',
+]
