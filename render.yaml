@@ -1,0 +1,54 @@
+services:
+  - type: web
+    name: buildmart-backend
+    env: python
+    region: oregon
+    plan: free
+    buildCommand: "cd backend && chmod +x build.sh && ./build.sh"
+    startCommand: "cd backend && gunicorn buildmart.wsgi:application --bind 0.0.0.0:8000"
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.10.8
+      - key: DEBUG
+        value: "False"
+      - key: DB_ENGINE
+        value: django.db.backends.postgresql
+      - key: DB_NAME
+        fromDatabase:
+          name: buildmart-db
+          property: database
+      - key: DB_USER
+        fromDatabase:
+          name: buildmart-db
+          property: user
+      - key: DB_PASSWORD
+        fromDatabase:
+          name: buildmart-db
+          property: password
+      - key: DB_HOST
+        fromDatabase:
+          name: buildmart-db
+          property: host
+      - key: DB_PORT
+        fromDatabase:
+          name: buildmart-db
+          property: port
+
+  - type: web
+    name: buildmart-frontend
+    env: static
+    region: oregon
+    plan: free
+    buildCommand: "cd frontend && npm install && npm run build"
+    staticPublishPath: "frontend/dist"
+    envVars:
+      - key: VITE_API_URL
+        # Replace this URL with the actual generated backend URL if Render adds a suffix
+        value: "https://buildmart-backend.onrender.com/api"
+
+databases:
+  - name: buildmart-db
+    databaseName: buildmart
+    user: buildmart_user
+    region: oregon
+    plan: free
